@@ -75,7 +75,7 @@ app.get('/protected', ensureAuthenticated, function(req, res) {
 
 
 
-var server = app.listen(3000, function () {
+var server = app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening at http://%s:%s',
     server.address().address, server.address().port);
 });
