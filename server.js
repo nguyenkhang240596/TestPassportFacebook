@@ -50,9 +50,9 @@ app.get('/error', (req, res) => { req.send(403)});
 
 app.get('/', function (req, res) {
   if (req.isAuthenticated()) {
-    req.send({user : req.user})
+    res.json({user : req.user})
   } else {
-    req.send(false)
+   res.send(403)
   }
 });
 
