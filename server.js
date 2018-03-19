@@ -13,7 +13,6 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     // placeholder for translating profile into your own custom user object.
     // for now we will just use the profile object returned by Facebook
-
     return done(null, profile);
   }
 ));
@@ -44,7 +43,8 @@ passport.deserializeUser(function(user, done) {
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/',
                                       failureRedirect: '/error' }));
-app.get('/auth/facebook/callback', (req, res) => { req.send(403)});
+
+app.get('/error', (req, res) => { req.send(403)});
 
 
 
