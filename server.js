@@ -49,11 +49,11 @@ app.get('/error', (req, res) => { req.send(403)});
 
 
 app.get('/', function (req, res) {
-  res.send({
-    isAuthenticated: req.isAuthenticated(),
-    user: req.user
-  })
-})
+  if (req.isAuthenticated()) {
+    req.send({user : req.user})
+  } else {
+    req.send(false)
+  }
 
 app.get('/login',
   passport.authenticate('facebook'))
